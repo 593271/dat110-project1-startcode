@@ -1,6 +1,11 @@
 package no.hvl.dat110.messaging;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -31,11 +36,22 @@ public class MessagingServer {
 		// TODO - START
 		// accept TCP connection on welcome socket and create connection
 
-		if (true)
-			throw new UnsupportedOperationException(TODO.method());
-		
+		System.out.println("Server ACCEPTING");
+
+		try {
+
+			Socket connectionSocket = welcomeSocket.accept();
+
+
+			connection = new Connection(connectionSocket);
+
+		} catch (IOException e) {
+			System.out.println("accept feil: " + e.getMessage());
+			e.printStackTrace();
+		}
+
 		// TODO - END
-		
+
 		return connection;
 
 	}
